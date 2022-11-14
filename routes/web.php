@@ -20,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('partenaires', PartenaireController::class);
+Route::resource('produits', ProduitController::class);
