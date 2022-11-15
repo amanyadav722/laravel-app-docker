@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\PartenaireController;
-use App\Models\Partenaire;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('partenaires', PartenaireController::class);
-Route::resource('produits', ProduitController::class);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+Route::resource('products', ProductController::class);
+
+
