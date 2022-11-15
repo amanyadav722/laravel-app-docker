@@ -1,33 +1,28 @@
 @extends('layout')
-
 @section('content')
-<div>
-    <h1>Créer un partenaire</h1>
+<br>
+<div class="m-15">
+ <button class="btn btn-primary mb-20"><a href="{{ url('/partners/') }}" class="link-light">Retour</a></button>
 </div>
+<br>
 
-<form action="{{ route('partners.store') }}" method="POST">
-    @csrf
-    @method("PATCH")
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="col-md-6 mb-3">
-                <label for="name">Entrez le nom du partenaire</label>
-                <input type="text" name="name" id="name" class="form-control" value="{{$partner->name}}">
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="mail">Entrez l'email du partenaire</label>
-                <input type="email" name="mail" id="mail" class="form-control" placeholder="mail@mail.com" value="{{$partner->email}}">
-            </div>
-            <div class="col-md-6 mb-3">
-                <label for="phone">Entrez le numéro de téléphone du partenaire</label>
-                <input type="text" name="phone" id="phone" class="form-control" value="{{$partner->phone}}">
-            </div>
-            <div class="pull-right">
-                <button type="submit" class="btn btn-primary">Valider</button>
-            </div>
-        </div>
-    </div>
-</form>
-
-
-@endsection
+<div class="card">
+  <div class="card-header">Modifier le partenaire</div>
+  <div class="card-body">
+      
+      <form action="{{ url('partners/' .$partners->id) }}" method="post">
+        {!! csrf_field() !!}
+        @method("PATCH")
+        <input type="hidden" name="id" id="id" value="{{$partners->id}}" id="id" />
+        <label>Nom</label></br>
+        <input type="text" name="name" id="name" value="{{$partners->name}}" class="form-control"></br>
+        <label> E-mail</label></br>
+        <input type="email" name="mail" id="mail" value="{{$partners->email}}" class="form-control"></br>
+        <label> Numéro de téléphone</label></br>
+        <input type="text" name="phone" id="phone" value="{{$partners->phone}}" class="form-control"></br>
+        <input type="submit" value="Mettre à jour" class="btn btn-success"></br>
+    </form>
+  
+  </div>
+</div>
+@stop

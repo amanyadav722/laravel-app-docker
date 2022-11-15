@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view ('users.index')->with('users', $users);
     }
 
     /**
@@ -24,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view ('users.create');;
     }
 
     /**
@@ -35,7 +36,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        User::create($input);
+        return redirect('users')->with('flash_message', 'User Addedd!');
     }
 
     /**
@@ -44,9 +47,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $users = User::find($id);
+        return view('users.show')->with('users', $users);
     }
 
     /**
@@ -55,9 +59,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $users = User::find($id);
+        return view('users.edit')->with('users', $users);
     }
 
     /**
@@ -67,9 +72,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        //
+        $users = User::find($id);
+        $input = $request->all();
+        $users->update($input);
+        return redirect('users')->with('flash_message', 'User Updated!');
     }
 
     /**
@@ -78,8 +86,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect('users')->with('flash_message', 'User deleted!');
     }
 }

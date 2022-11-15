@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 
 
@@ -26,5 +28,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('products', ProductController::class);
+Route::resource('partners', PartnerController::class);
+Route::resource('users', UserController::class);
 
 

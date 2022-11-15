@@ -48,8 +48,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show')->with('product', $product);
+        $products = Product::find($id);
+        return view('products.show')->with('products', $products);
     }
 
     /**
@@ -60,8 +60,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        return view('products.edit')->with('product', $product);
+        $products = Product::find($id);
+        return view('products.edit')->with('products', $products);
     }
 
     /**
@@ -72,10 +72,10 @@ class ProductController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $product = Product::find($id);
+        $products = Product::find($id);
         $input = $request->all();
-        $product->update($input);
-        return redirect('product')->with('flash_message', 'Product Updated!');
+        $products->update($input);
+        return redirect('products')->with('flash_message', 'Product Updated!');
     }
 
     /**
@@ -87,6 +87,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
-        return redirect('product')->with('flash_message', 'Products deleted!');
+        return redirect('products')->with('flash_message', 'Products deleted!');
     }
 }

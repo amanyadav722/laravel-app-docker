@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Partenaire;
+use App\Models\Partner;
 use Illuminate\Http\Request;
-use App\Http\Requests\StorePartenaireRequest;
-use App\Http\Requests\UpdatePartenaireRequest;
 
-class PartenaireController extends Controller
+class PartnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,8 @@ class PartenaireController extends Controller
      */
     public function index()
     {
-        return redirect()->route('partenaires.index')->with('success','Enregistrement réussi');
+        $partners = Partner::all();
+        return view ('partners.index')->with('partners', $partners);
     }
 
     /**
@@ -26,7 +25,7 @@ class PartenaireController extends Controller
      */
     public function create()
     {
-        return view('partenaires.create');
+        return view('partners.create');
     }
 
     /**
@@ -46,61 +45,61 @@ class PartenaireController extends Controller
         ]);
 
         //Créer un nouveaux produits
-        Partenaire::create($request->all());
-        $test = [
-            'name' => 'Test',
-            'mail' => 'test@test.com',
-            'phone' => '0102030405'
-        ];
+        Partner::create($request->all());
+     
         //Partenaire::create($test);
 
         //Rediriger l'utilisateur et envoyer un message
 
-        return redirect()->route('partenaires.index')->with('success','Enregistrement réussi');
+        return redirect()->route('partners.index')->with('success','Enregistrement réussi');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Partenaire  $partenaire
+     * @param  \App\Models\Partner  $partenaire
      * @return \Illuminate\Http\Response
      */
-    public function show(Partenaire $partenaire)
+    public function show($id)
     {
-        return redirect()->route('partenaires.show')->with('success','Enregistrement réussi');
+        $partners = Partner::find($id);
+        return view('partners.show')->with('partners', $partners);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Partenaire  $partenaire
+     * @param  \App\Models\Partner $partenaire
      * @return \Illuminate\Http\Response
      */
-    public function edit(Partenaire $partenaire)
+    public function edit($id)
     {
-        return redirect()->route('partenaires.edit')->with('success','Enregistrement réussi');
+        $partners = Partner::find($id);
+        return view('partners.edit')->with('partners', $partners);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePartenaireRequest  $request
-     * @param  \App\Models\Partenaire  $partenaire
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePartenaireRequest $request, Partenaire $partenaire)
+    public function update(Request $request, $id)
     {
-        return redirect()->route('partenaires.update')->with('success','Enregistrement réussi');
+        $partners = Partner::find($id);
+        $input = $request->all();
+        $partners->update($input);
+        return redirect('partners')->with('flash_message', 'Partners Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Partenaire  $partenaire
+     * @param  \App\Models\Partner $partenaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Partenaire $partenaire)
+    public function destroy($id)
     {
-        //
+        Partner::destroy($id);
+        return redirect('partners')->with('flash_message', 'Partners deleted!');
     }
 }
