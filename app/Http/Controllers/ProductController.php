@@ -37,7 +37,7 @@ class ProductController extends Controller
     {
         $input = $request->all();
         Product::create($input);
-        return redirect('product')->with('flash_message', 'Product Addedd!');
+        return redirect('products')->with('flash_message', 'Product Addedd!');
     }
 
     /**
