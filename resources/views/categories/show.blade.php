@@ -11,7 +11,7 @@
     <div class="card-body">
         <div class="card-body">
         <h5 class="card-title">Nom : {{ $categories->name }}</h5>
-        <p class="card-text">parent : {{ $categories->mail }}</p>
+        <p class="card-text">parent : {{ $categories->parent }}</p>
         </div>  
     </hr>
     </div>

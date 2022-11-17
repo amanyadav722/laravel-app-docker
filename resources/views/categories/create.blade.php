@@ -12,15 +12,14 @@
 
       <form action="{{ url('partners') }}" method="post">
         {!! csrf_field() !!}
-        <label>Nom du partenaire</label></br>
+        <label>Nom de la catégorie</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>
-        <label>E-mail</label></br>
-        <input type="email" name="mail" id="mail" class="form-control"></br>
-        <select id="role">
-          <option value="">Est une catégorie parent</option>
+
+        <select name="parent" id="parent">
+          <option value="">Est-ce une catégorie parent</option>
           <option value="1">oui</option>
           <option value="0">non</option>
-        </select>
+        </select></br></br>
         <input type="submit" value="Ajouter" class="btn btn-success"></br>
       </form>
     </div>
