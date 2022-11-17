@@ -20,7 +20,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>id</th>
+                                        <th>ID</th>
                                         <th>Nom</th>
                                         <th>EAN</th>
                                         <th>Image 1</th>

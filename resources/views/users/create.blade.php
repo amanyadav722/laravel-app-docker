@@ -19,7 +19,7 @@
         <label>Mot de passe</label></br>
         <input type="password" name="password" id="password" class="form-control"></br>
         <label>Rôle</label></br>
-        <select id="role">
+        <select id="role" class="form-control">
           <option value="">Veuillez selectionnez un rôle</option>
           <option value="admin">Admin</option>
           <option value="partner">partner</option>

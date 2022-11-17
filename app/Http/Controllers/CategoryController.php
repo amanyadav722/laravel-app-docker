@@ -36,19 +36,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'parent' => 'required',
-        ]);
-
-        //Créer un nouveaux produits
-        Category::create($request->all());
-     
-        //Partenaire::create($test);
-
-        //Rediriger l'utilisateur et envoyer un message
-
-        return redirect()->route('categories.index')->with('success','Enregistrement réussi');
+        $input = $request->all();
+        Category::create($input);
+        return redirect('categories')->with('flash_message', 'categories Addedd!');
     }
 
     /**
@@ -57,6 +47,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         $categories = Category::find($id);

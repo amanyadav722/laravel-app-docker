@@ -47,6 +47,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $produit
      * @return \Illuminate\Http\Response
      */
+    
     public function show($id)
     {
         $products = Product::find($id);

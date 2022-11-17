@@ -17,7 +17,11 @@
         <label>Nom de la catégorie</label></br>
         <input type="text" name="name" id="name" value="{{$categories->name}}" class="form-control"></br>
         <label>Parent</label></br>
-        <input type="email" name="mail" id="mail" value="{{$categories->parent}}" class="form-control"></br>
+        <select name="parent" id="parent" value="{{$categories->parent}}" class="form-control">
+          <option value="">Est-ce une catégorie parent</option>
+          <option value="1">oui</option>
+          <option value="0">non</option>
+        </select></br></br>
         <input type="submit" value="Mettre à jour" class="btn btn-success"></br>
     </form>
   
