@@ -13,6 +13,7 @@
             <div class="container d-flex flex-column flex-md-row justify-content-between">
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/') }}">Accueil</a>
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/products') }}">Produits</a>
+              <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/categories') }}">Catégories</a>
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/partners') }}">Partenaires</a>
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/users') }}">Utilisateurs</a>
                 @if (Route::has('login'))

@@ -7,17 +7,23 @@
 <br>
   
 <div class="card">
-  <div class="card-header">Créer une catégorie</div>
-  <div class="card-body">
+  <div class="card-header">Créer un partenaire</div>
+    <div class="card-body">
 
       <form action="{{ url('partners') }}" method="post">
         {!! csrf_field() !!}
-        <label>Nom de la catégorie</label></br>
+        <label>Nom du partenaire</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>
         <label>E-mail</label></br>
         <input type="email" name="mail" id="mail" class="form-control"></br>
-    </form>
-  
+        <select id="role">
+          <option value="">Est une catégorie parent</option>
+          <option value="1">oui</option>
+          <option value="0">non</option>
+        </select>
+        <input type="submit" value="Ajouter" class="btn btn-success"></br>
+      </form>
+    </div>
   </div>
 </div>
 @stop

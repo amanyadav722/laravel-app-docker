@@ -21,9 +21,9 @@
         <label>Rôle</label></br>
         <select id="role">
           <option value="">Veuillez selectionnez un rôle</option>
-          <option value="dog">Admin</option>
-          <option value="cat">User</option>
-          <option value="hamster">Gecodis</option>
+          <option value="admin">Admin</option>
+          <option value="partner">partner</option>
+          <option value="user">user</option>
       </select>
       <br>
       <br>
