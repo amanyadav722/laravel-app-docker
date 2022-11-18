@@ -28,9 +28,17 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('products', ProductController::class);
-Route::resource('partners', PartnerController::class);
-Route::resource('users', UserController::class);
-Route::resource('categories', CategoryController::class);
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    
+    Route::resource('partners', PartnerController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('categories', CategoryController::class);
+    
+});
 
+Route::middleware(['auth'])->group(function() {
+    
+    Route::resource('products', ProductController::class);
+
+});
 
