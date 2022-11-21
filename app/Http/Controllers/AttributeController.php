@@ -33,7 +33,6 @@ class AttributeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAttributeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,7 +69,6 @@ class AttributeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAttributeRequest  $request
      * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */

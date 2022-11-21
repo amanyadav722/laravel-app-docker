@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AttributCategory;
+use App\Models\Category;
+use Attribute;
 use Illuminate\Http\Request;
 
 class AttributCategoryController extends Controller
@@ -35,7 +37,7 @@ class AttributCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('attributcategory.create');
     }
 
     /**
@@ -44,9 +46,10 @@ class AttributCategoryController extends Controller
      * @param  \App\Models\AttributCategory  $attributCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(AttributCategory $attributCategory)
+    public function show($id)
     {
-        //
+        $attributes = AttributCategory::find($id);
+        return view('attributes.show')->with('attributes', $attributes);
     }
 
     /**
@@ -55,9 +58,11 @@ class AttributCategoryController extends Controller
      * @param  \App\Models\AttributCategory  $attributCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(AttributCategory $attributCategory)
+    public function edit(Request $request)
     {
-        //
+        $input = $request->all();
+        AttributCategory::create($input);
+        return redirect('attributcatebory')->with('flash_message', 'attributes Addedd to category!');
     }
 
     /**
@@ -67,9 +72,10 @@ class AttributCategoryController extends Controller
      * @param  \App\Models\AttributCategory  $attributCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AttributCategory $attributCategory)
+    public function update($id)
     {
-        //
+        $attributcategory = AttributCategory::find($id);
+        return view('attributcategory.show')->with('attributcategory', $attributcategory);
     }
 
     /**
@@ -78,8 +84,9 @@ class AttributCategoryController extends Controller
      * @param  \App\Models\AttributCategory  $attributCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AttributCategory $attributCategory)
+    public function destroy($id)
     {
-        //
+        AttributCategory::destroy($id);
+        return redirect('attributes')->with('flash_message', 'Attributes deleted!');
     }
 }
