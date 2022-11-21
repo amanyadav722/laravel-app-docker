@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AttributeController;
 
 
 /*
@@ -39,6 +40,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 Route::middleware(['auth'])->group(function() {
     
     Route::resource('products', ProductController::class);
-
+    
 });
 
+Route::resource('attributes', AttributeController::class);

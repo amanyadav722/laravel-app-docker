@@ -16,6 +16,7 @@
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/categories') }}">Catégories</a>
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/partners') }}">Partenaires</a>
               <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/users') }}">Utilisateurs</a>
+              <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none" href="{{ url('/attributes') }}">Attributs</a>
                 @if (Route::has('login'))
                         @auth
                             <a href="{{ url('/dashboard') }}" class="py-2 d-none d-md-inline-block text-reset text-decoration-none">Tableau de Board</a>
