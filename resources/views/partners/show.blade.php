@@ -17,3 +17,5 @@
     </hr>
     </div>
 </div>
+
+@endsection
