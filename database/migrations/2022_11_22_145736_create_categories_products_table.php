@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -15,6 +17,8 @@ return new class extends Migration
     {
         Schema::create('categories_products_table', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Product::class);
+            $table->foreignIdFor(Category::class);
             $table->timestamps();
         });
     }
