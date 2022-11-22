@@ -16,7 +16,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('attribute_products', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['attribute_id', 'product_id']);
             $table->foreignIdFor(Attribute::class);
             $table->foreignIdFor(Product::class);
             $table->string('valeur');

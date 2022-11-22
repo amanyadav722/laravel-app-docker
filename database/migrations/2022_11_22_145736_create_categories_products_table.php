@@ -16,7 +16,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories_products_table', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['product_id', 'category_id']);
             $table->foreignIdFor(Product::class);
             $table->foreignIdFor(Category::class);
             $table->timestamps();
