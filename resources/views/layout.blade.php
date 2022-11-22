@@ -3,7 +3,6 @@
 
 <head>
     <title>PIM Habitat et Jardin</title>
-    <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,15 +55,7 @@
     </div>
     <div class="container">
         <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a class="nav-link px-2 text-muted" href="{{ url('/') }}">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" href="{{ url('/products') }}">Produits</a>
-                </li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" href="{{ url('/partners') }}">Partenaires</a>
-                </li>
-                <li class="nav-item"><a class="nav-link px-2 text-muted" href="{{ url('/users') }}">Utilisateurs</a>
-                </li>
-            </ul>
+            <hr>
             <p class="text-center text-muted">© {{ date('Y') }} Habitat et Jardin</p>
         </footer>
     </div>
@@ -77,7 +68,6 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous">
-</script>
 </script>
 
 </html>
