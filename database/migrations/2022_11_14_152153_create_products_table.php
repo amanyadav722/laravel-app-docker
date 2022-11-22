@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Partner;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Partner::class);
             $table->string('name');
             $table->string('ean')->default('0');
             $table->string('image_1')->default('NULL');
