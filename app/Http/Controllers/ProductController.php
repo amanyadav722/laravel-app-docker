@@ -35,7 +35,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $filename = time() . ".images." . $request;
         $input = $request->all();
         Product::create($input);
         return redirect('products')->with('flash_message', 'Product Addedd!');
