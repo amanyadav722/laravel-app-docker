@@ -16,9 +16,16 @@
         <input type="text" name="name" id="name" class="form-control"></br>
         <label>Numéro EAN</label></br>
         <input type="text" name="ean" id="ean" class="form-control"></br>
-        <select name="parent" id="parent" class="form-control">
-          <option value="">Selectionnez une catégorie</option>
-          <option value="1">oui</option>
+        <label>Catégorie</label></br>
+        <select name="category" id="category" class="form-control"></br>
+          <option value="">Selectionnez une catégorie</option></br>
+
+          @foreach ($categories as $category)
+
+          <option value="{{$category->id}}">{{$category->name}}</option>
+          
+          @endforeach
+        </select></br>
         <input type="file" name="file1" id="file1" class="form-control"></br>
         <label>Image 2</label></br>
         <input type="file" name="file2" id="file2" class="form-control"></br>
