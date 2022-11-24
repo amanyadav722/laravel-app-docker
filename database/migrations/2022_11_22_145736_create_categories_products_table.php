@@ -19,7 +19,6 @@ return new class extends Migration
             $table->primary(['product_id', 'category_id']);
             $table->foreignIdFor(Product::class);
             $table->foreignIdFor(Category::class);
-            $table->timestamps();
         });
     }
 
