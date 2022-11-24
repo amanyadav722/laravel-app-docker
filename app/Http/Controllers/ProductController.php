@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -36,9 +37,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        Product::create($input);
-        return redirect('products')->with('flash_message', 'Product Addedd!');
+        $date = $request->validate([
+            'name' => 'required',
+            'ean' => 'required',
+            'category' => 'required',
+        ]);
+
+        $product = new Product();
+
+        $product->name =  $request->name;
+        $product->ean =  $request->ean;
+        $product->category =  $request->category;
+
+        $product->save();
+
+
+
+        return redirect('products');
     }
 
     /**

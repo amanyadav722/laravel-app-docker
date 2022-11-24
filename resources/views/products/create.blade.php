@@ -26,16 +26,17 @@
           
           @endforeach
         </select></br>
-        <input type="file" name="file1" id="file1" class="form-control"></br>
-        <label>Image 2</label></br>
-        <input type="file" name="file2" id="file2" class="form-control"></br>
+        <label>Image 1</label></br>
+        <input type="file" name="image_1" id="image_1" class="form-control"></br>
+        <input type="submit" value="Ajouter" class="btn btn-success"></br> 
+        {{-- <label>Image 2</label></br>
+        <input type="file" name="product_image" id="product_image" class="form-control"></br>
         <label>Image 3</label></br>
-        <input type="file" name="file3" id="file3" class="form-control"></br>
+        <input type="file" name="product_image" id="product_image" class="form-control"></br>
         <label>Image 4</label></br>
-        <input type="file" name="file4" id="file4" class="form-control"></br>
+        <input type="file" name="product_image" id="product_image" class="form-control"></br>
         <label>Image 5</label></br>
-        <input type="file" name="file5" id="file5" class="form-control"></br>
-        <input type="submit" value="Ajouter" class="btn btn-success"></br>
+        <input type="file" name="product_image" id="product_image" class="form-control"></br>--}}
     </form>
   
   </div>
