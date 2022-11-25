@@ -7,7 +7,7 @@
 <br>
   
 <div class="card">
-  <div class="card-header">Créer un produit</div>
+  <div class="card-header">Créer un attribut</div>
   <div class="card-body">
 
       <form action="{{ url('attributes') }}" method="post">

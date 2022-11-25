@@ -28,9 +28,10 @@ class ProductController extends Controller
     public function create()
     {
         $products = Product::all();
+
         return view ('products.create')->with('products', $products);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -38,19 +39,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required',
             'ean' => 'required',
-            'category' => 'required',
         ]);
-
+        
         $product = new Product();
         $product->name = $request->name;
         $product->ean = $request->ean;
         $product->save();
-
-
-
+        
         return redirect('products');
     }
 

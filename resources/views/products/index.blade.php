@@ -28,6 +28,8 @@
                                         <th>Image 3</th>
                                         <th>Image 4</th>
                                         <th>Image 5</th>
+                                        <th>Categorie</th>
+                                        <th>Attribut</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -37,6 +39,8 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->ean }}</td>
+                                        <td>Ligne</td>
+                                        <td>Ligne</td>
                                         <td>{{ $item->image_1 }}</td>
                                         <td>{{ $item->image_2 }}</td>
                                         <td>{{ $item->image_3 }}</td>

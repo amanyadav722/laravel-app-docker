@@ -12,9 +12,9 @@ class Product extends Model
     use HasFactory;
 
     protected $table = "products";
-    protected $fillable = ["name","ean", "image_1", "image_2", "image_3", "image_4", "image_5", "created_at", "updated_at"];
+    protected $fillable = ["name","ean", "image_1","created_at", "updated_at"];
 
-    public function categories() 
+    protected function categories() 
     {
         return $this->belongsToMany(Category::class);    
     }
