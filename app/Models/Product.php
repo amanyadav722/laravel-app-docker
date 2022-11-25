@@ -14,13 +14,8 @@ class Product extends Model
     protected $table = "products";
     protected $fillable = ["name","ean", "image_1", "image_2", "image_3", "image_4", "image_5", "created_at", "updated_at"];
 
-    public function category() 
+    public function categories() 
     {
-        return $this->hasOne(Category::class,'categories_products_table');    
+        return $this->belongsToMany(Category::class);    
     }
-
-    public function partners() {
-        return $this->belongsTo(Partner::class);
-    }
-    
 }

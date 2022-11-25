@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Attribute;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,10 +15,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories_products', function (Blueprint $table) {
-            $table->primary(['product_id', 'category_id']);
-            $table->foreignIdFor(Product::class);
-            $table->foreignIdFor(Category::class);
+        Schema::create('attribute_category', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('attribute_id')->constrained();
+            $table->foreignId('category_id')->constrained();
+            $table->string('constraints_type');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories_products_table');
+        Schema::dropIfExists('attribut_category');
     }
 };

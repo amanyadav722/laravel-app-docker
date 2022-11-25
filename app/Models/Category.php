@@ -17,8 +17,8 @@ class Category extends Model
         'parent',
     ];
 
-    public function product() 
+    public function products() 
     {
-        return $this->belongsToMany(Product::class, 'categories_products_table');    
+        return $this->belongsToMany(Product::class);    
     }
 }

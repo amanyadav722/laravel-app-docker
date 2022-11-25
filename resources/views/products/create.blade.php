@@ -20,7 +20,8 @@
         <select name="category" id="category" class="form-control"></br>
           <option value="">Selectionnez une catégorie</option></br>
 
-          @foreach ($categories as $category)
+
+          @foreach ($products->categories as $category)
 
           <option value="{{$category->id}}">{{$category->name}}</option>
           

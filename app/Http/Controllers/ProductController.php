@@ -27,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view ('products.create')->with('categories', Category::all());
+        $products = Product::all();
+        return view ('products.create')->with('products', $products);
     }
 
     /**
@@ -37,18 +38,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $date = $request->validate([
+        $data = $request->validate([
             'name' => 'required',
             'ean' => 'required',
             'category' => 'required',
         ]);
 
         $product = new Product();
-
-        $product->name =  $request->name;
-        $product->ean =  $request->ean;
-        $product->category =  $request->category;
-
+        $product->name = $request->name;
+        $product->ean = $request->ean;
         $product->save();
 
 
