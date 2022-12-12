@@ -88,7 +88,7 @@ class ProductController extends Controller
         $products = Product::find($id);
         $input = $request->all();
         $products->update($input);
-        return redirect('products')->with('flash_message', 'Product Updated!');
+        return redirect('products');
     }
 
     /**
@@ -100,6 +100,6 @@ class ProductController extends Controller
     public function destroy($id)
     {
         Product::destroy($id);
-        return redirect('products')->with('flash_message', 'Products deleted!');
+        return redirect('products');
     }
 }

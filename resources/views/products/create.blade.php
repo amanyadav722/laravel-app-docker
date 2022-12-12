@@ -17,7 +17,7 @@
         <label>Numéro EAN</label></br>
         <input type="text" name="ean" id="ean" class="form-control"></br>
         <label>Catégorie</label></br>
-        <select name="category" id="category" class="form-control"></br>
+        {{-- <select name="category" id="category" class="form-control"></br>
           <option value="">Selectionnez une catégorie</option></br>
 
 
@@ -26,7 +26,7 @@
           <option value="{{$category->id}}">{{$category->name}}</option>
           
           @endforeach
-        </select></br>
+        </select></br> --}}
         <label>Image 1</label></br>
         <input type="file" name="image_1" id="image_1" class="form-control"></br>
         <input type="submit" value="Ajouter" class="btn btn-success"></br> 

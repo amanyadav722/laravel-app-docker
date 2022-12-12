@@ -39,7 +39,7 @@ class CategoryController extends Controller
     {
         $input = $request->all();
         Category::create($input);
-        return redirect('categories')->with('flash_message', 'categories Addedd!');
+        return redirect('categories');
     }
 
     /**
@@ -79,7 +79,7 @@ class CategoryController extends Controller
         $categories = Category::find($id);
         $input = $request->all();
         $categories->update($input);
-        return redirect('categories')->with('flash_message', 'categories Updated!');
+        return redirect('categories');
     }
 
     /**
@@ -91,6 +91,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect('categories')->with('flash_message', 'Category deleted!');
+        return redirect('categories');
     }
 }
