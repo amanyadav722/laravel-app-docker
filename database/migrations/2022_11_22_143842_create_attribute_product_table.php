@@ -13,6 +13,7 @@ return new class extends Migration
      *
      * @return void
      */
+
     public function up()
     {
         Schema::create('attribute_product', function (Blueprint $table) {
@@ -28,6 +29,7 @@ return new class extends Migration
      *
      * @return void
      */
+    
     public function down()
     {
         Schema::dropIfExists('attribute_products');

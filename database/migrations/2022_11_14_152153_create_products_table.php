@@ -18,6 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('ean')->default('0');
+            $table->text('short_description')->default('0');
+            $table->text('long_description')->default('0');
             $table->string('image_1')->default('NULL');
             $table->string('image_2')->default('NULL');
             $table->string('image_3')->default('NULL');
