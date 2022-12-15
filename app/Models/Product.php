@@ -16,6 +16,6 @@ class Product extends Model
 
     protected function categories() 
     {
-        return $this->belongsToMany(Category::class);    
+        return $this->hasOne(Category::class);    
     }
 }

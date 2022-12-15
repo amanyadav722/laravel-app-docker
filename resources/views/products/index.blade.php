@@ -23,13 +23,6 @@
                                         <th>ID</th>
                                         <th>Nom</th>
                                         <th>EAN</th>
-                                        <th>Image 1</th>
-                                        <th>Image 2</th>
-                                        <th>Image 3</th>
-                                        <th>Image 4</th>
-                                        <th>Image 5</th>
-                                        <th>Categorie</th>
-                                        <th>Attribut</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -39,13 +32,6 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->ean }}</td>
-                                        <td>Ligne</td>
-                                        <td>Ligne</td>
-                                        <td>{{ $item->image_1 }}</td>
-                                        <td>{{ $item->image_2 }}</td>
-                                        <td>{{ $item->image_3 }}</td>
-                                        <td>{{ $item->image_4 }}</td>
-                                        <td>{{ $item->image_5 }}</td>
                                         <td>
                                             <a href="{{ url('/products/' . $item->id) }}" title="Voir produit"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Afficher</button></a>
                                             <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Editer Produit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</button></a>

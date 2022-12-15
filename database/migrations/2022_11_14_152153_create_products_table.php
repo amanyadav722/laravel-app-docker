@@ -16,7 +16,6 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Partner::class);
             $table->string('name');
             $table->string('ean')->default('0');
             $table->string('image_1')->default('NULL');

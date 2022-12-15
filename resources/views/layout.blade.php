@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -17,12 +18,11 @@
                     href="{{ url('/') }}">Accueil</a>
                 <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                     href="{{ url('/products') }}">Produits</a>
+
                 @if (Route::has('login'))
                     @auth
                         <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                             href="{{ url('/categories') }}">Catégories</a>
-                        <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
-                            href="{{ url('/partners') }}">Partenaires</a>
                         <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                             href="{{ url('/users') }}">Utilisateurs</a>
                         <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
@@ -42,6 +42,7 @@
                         @endauth
                     @endif
                 @endif
+
             </div>
         </nav>
     </header>
@@ -53,6 +54,7 @@
     <div class="container position-static">
         @yield('content')
     </div>
+
     <div class="container">
         <footer class="py-3 my-4">
             <hr>
@@ -61,11 +63,13 @@
     </div>
 
 </body>
+
 <script>
     < script src = "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity = "sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
     crossorigin = "anonymous" >
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous">
 </script>

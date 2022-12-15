@@ -16,7 +16,7 @@
         <input type="text" name="name" id="name" class="form-control"></br>
         <label>Numéro EAN</label></br>
         <input type="text" name="ean" id="ean" class="form-control"></br>
-        <label>Catégorie</label></br>
+        {{-- <label>Catégorie</label></br> --}}
         {{-- <select name="category" id="category" class="form-control"></br>
           <option value="">Selectionnez une catégorie</option></br>
 
