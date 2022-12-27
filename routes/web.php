@@ -33,6 +33,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('attributes', AttributeController::class);
+    Route::get('/products/export', 'ProductController@export');
     
 });
 

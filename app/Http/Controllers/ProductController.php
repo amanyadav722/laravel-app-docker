@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use SplTempFileObject;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
+use NunoMaduro\Collision\Contracts\Writer;
 
 class ProductController extends Controller
 {
@@ -17,7 +20,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view ('products.index')->with('products', $products);
+
+        return view('products.index', compact('products'));
     }
 
     /**
@@ -27,11 +31,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
 
-        return view ('products.create')->with('products', $products);
+        $categories = Category::all();
+
+        return view('products.create')->with('categories', $categories);;
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -41,15 +46,22 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'ean' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'image|mimes:jpeg,png,jpg|max:1500|dimensions:max_width=1500,max_height=1500',
         ]);
-        
+
         $product = new Product();
-        $product->name = $request->name;
-        $product->ean = $request->ean;
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->category_id = $request->input('category_id');
+        $product->user_id = auth()->user()->id;
+        $product->image = $request->image;
         $product->save();
-        
-        return redirect('products');
+
+        return redirect('/products')->with('success', 'Produit enregistré avec succès');
     }
 
     /**
@@ -58,7 +70,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $produit
      * @return \Illuminate\Http\Response
      */
-    
+
     public function show($id)
     {
         $products = Product::find($id);
@@ -83,7 +95,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $produit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $products = Product::find($id);
         $input = $request->all();
@@ -97,6 +109,8 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $produit
      * @return \Illuminate\Http\Response
      */
+
+
     public function destroy($id)
     {
         Product::destroy($id);
