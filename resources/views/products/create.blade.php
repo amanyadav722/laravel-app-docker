@@ -1,69 +1,55 @@
 @extends('layout')
 @section('content')
     <br>
-    <form method="POST" action="{{ route('products.store') }}" class="needs-validation" novalidate>
+    <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
         @csrf
-
-        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
-        
+    
         <div class="form-group">
             <label for="name">Nom du produit</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-            <div class="invalid-feedback">
-                Le nom du produit est requis.
-            </div>
-            @error('name')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
         </div>
-
+    
         <div class="form-group">
-            <label for="long_description">Description courte</label>
-            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
-            <div class="invalid-feedback">
-                La description courte est requise.
-            </div>
-            @error('description')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+            <label for="ean">Numéro EAN</label>
+            <input type="text" class="form-control" id="ean" name="ean" value="{{ old('ean') }}" required>
         </div>
-
+    
         <div class="form-group">
-            <label for="short_description">Description longue</label>
-            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
-            <div class="invalid-feedback">
-                La description longue est requise.
-            </div>
-            @error('description')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+            <label for="short_description">Description Courte</label>
+            <input type="text" class="form-control" id="short_description" name="short_description" value="{{ old('short_description') }}" required>
         </div>
-
+    
+        <div class="form-group">
+            <label for="long_description">Description longue</label>
+            <textarea class="form-control" id="long_description" name="long_description" required>{{ old('long_description') }}</textarea>
+        </div>
+    
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control" id="image" name="image" accept="image/*">
+        </div>
+    
         <div class="form-group">
             <label for="category_id">Catégorie</label>
-            <select class="form-control" id="category_id" name="category_id">
+            <select class="form-control" id="category_id" name="category_id" required>
+                <option value=""></option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                 @endforeach
             </select>
-            @error('category_id')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
         </div>
-
+    
         <div class="form-group">
-            <label for="image_url">Image</label>
-            <input type="file" class="form-control" id="image_url" name="image_url" value="{{ old('image_url') }}"
-                required>
-            <div class="invalid-feedback">
-                L'image est requise.
-            </div>
-            @error('image_url')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
+            <label for="status">Status</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value=""></option>
+                <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+                <option value="validated" {{ old('status') == 'validated' ? 'selected' : '' }}>Validated</option>
+                <option value="rejected" {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+            </select>
         </div>
-
-        </br>
-        <button type="submit" class="btn btn-primary">Ajouter le produit</button>
+    <br>
+        <button type="submit" class="btn btn-primary">Créer le produit</button>
     </form>
+    
 @endsection

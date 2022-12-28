@@ -2,69 +2,135 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
+
 
 class ProductController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $products = Product::all();
+
         return view('products.index', compact('products'));
     }
 
-    public function show(Product $product)
-    {
-        return view('products.show', compact('product'));
-    }
+    /**
+     * Show the form for creating a new product.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-    public function edit(Product $product)
+    public function create()
     {
         $categories = Category::all();
-        return view('products.edit', compact('product', 'categories'));
+
+        return view('products.create', compact('categories'));
     }
 
-    public function update(Request $request, Product $product)
+    public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'ean' => 'required|unique:products,ean,'.$product->id.'|max:13',
-            'short_description' => 'required|max:255',
-            'long_description' => 'required',
-            'image' => 'nullable|image|max:1500',
+            'name' => 'required|string|max:255',
+            'ean' => 'required|string|max:255|unique:products',
+            'short_description' => 'required|string|max:255',
+            'long_description' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:categories,id',
-            'status' => 'required|in:pending,validated,rejected'
+            'status' => 'required|in:pending,validated,rejected',
         ]);
 
-        $product->name = $request->name;
-        $product->ean = $request->ean;
-        $product->short_description = $request->short_description;
-        $product->long_description = $request->long_description;
-        $product->category_id = $request->category_id;
-        $product->status = $request->status;
+        $product = new Product();
+        $product->name = $request->input('name');
+        $product->ean = $request->input('ean');
+        $product->short_description = $request->input('short_description');
+        $product->long_description = $request->input('long_description');
+        $product->category_id = $request->input('category_id');
+        $product->status = $request->input('status');
+        $product->user_id = Auth::id();
 
         if ($request->hasFile('image')) {
-            $currentImage = $product->image;
-            if ($currentImage) {
-                Storage::delete('public/'.$currentImage);
-            }
             $image = $request->file('image');
+            $image = Image::make($image);
+            $imageWidth = $image->width();
+            $imageHeight = $image->height();
+            if ($imageWidth > 1500 || $imageHeight > 1500) {
+                $image = $image->resize(1500, 1500, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+            }
             $path = $image->store('products', 'public');
             $product->image = $path;
         }
+
 
         $product->save();
 
         return redirect()->route('products.index');
     }
 
-    public function destroy(Product $product)
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Product  $produit
+     * @return \Illuminate\Http\Response
+     */
+
+    public function show($id)
     {
-        $product->delete();
-        return redirect()->route('products.index');
+        $products = Product::find($id);
+        return view('products.show')->with('products', $products);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Product  $produit
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $products = Product::find($id);
+        return view('products.edit')->with('products', $products);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Models\Product  $produit
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $products = Product::find($id);
+        $input = $request->all();
+        $products->update($input);
+        return redirect('products');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Product  $produit
+     * @return \Illuminate\Http\Response
+     */
+
+
+    public function destroy($id)
+    {
+        Product::destroy($id);
+        return redirect('products');
     }
 }
