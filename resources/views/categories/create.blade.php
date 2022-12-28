@@ -9,17 +9,10 @@
 <div class="card">
   <div class="card-header">Créer un partenaire</div>
     <div class="card-body">
-
       <form action="{{ url('categories') }}" method="post">
-        {!! csrf_field() !!}
+        @csrf
         <label>Nom de la catégorie</label></br>
         <input type="text" name="name" id="name" class="form-control"></br>
-
-        <select name="parent" id="parent" class="form-control">
-          <option value="">Est-ce une catégorie parent</option>
-          <option value="1">oui</option>
-          <option value="0">non</option>
-        </select></br></br>
         <input type="submit" value="Ajouter" class="btn btn-success"></br>
       </form>
     </div>

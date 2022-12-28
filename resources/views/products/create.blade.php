@@ -10,7 +10,7 @@
             <label for="name">Nom du produit</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
             <div class="invalid-feedback">
-                Name is required.
+                Le nom du produit est requis.
             </div>
             @error('name')
                 <div class="text-danger">{{ $message }}</div>
@@ -21,7 +21,7 @@
             <label for="long_description">Description courte</label>
             <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
             <div class="invalid-feedback">
-                Description is required.
+                La description courte est requise.
             </div>
             @error('description')
                 <div class="text-danger">{{ $message }}</div>
@@ -56,7 +56,7 @@
             <input type="file" class="form-control" id="image_url" name="image_url" value="{{ old('image_url') }}"
                 required>
             <div class="invalid-feedback">
-                Image URL is required.
+                L'image est requise.
             </div>
             @error('image_url')
                 <div class="text-danger">{{ $message }}</div>

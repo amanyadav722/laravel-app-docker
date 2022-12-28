@@ -1,37 +1,77 @@
 @extends('layout')
 @section('content')
-<br>
-<div class="m-15">
- <button class="btn btn-primary mb-20"><a href="{{ url('/products/') }}" class="link-light">Retour</a></button>
-</div>
-<br>
+    <br>
+    <div class="m-15">
+        <button class="btn btn-primary mb-20"><a href="{{ url('/products/') }}" class="link-light">Retour</a></button>
+    </div>
+    <br>
+    <br>
+    <form method="POST" action="{{ route('products.store') }}" class="needs-validation" novalidate>
+        @csrf
 
-<div class="card">
-  <div class="card-header">Modifier le produit</div>
-  <div class="card-body">
-      
-      <form action="{{ url('products/' .$products->id) }}" method="post">
-        {!! csrf_field() !!}
-        @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$products->id}}" id="id" />
-        <label>Nom</label></br>
-        <input type="text" name="name" id="name" value="{{$products->name}}" class="form-control"></br>
-        <label> Numéro EAN</label></br>
-        <input type="text" name="ean" id="ean" value="{{$products->ean}}" class="form-control"></br>
-        <label>Image 1</label></br>
-        <input type="file" name="file1" id="image_1" value="{{$products->image_1}}" class="form-control"></br>
-        <label>Image 2</label></br>
-        <input type="file" name="file1" id="image_2" value="{{$products->image_2}}" class="form-control"></br>
-        <label>Image 3</label></br>
-        <input type="file" name="file1" id="image_3" value="{{$products->image_3}}" class="form-control"></br>
-        <label>Image 4</label></br>
-        <input type="file" name="file1" id="image_4" value="{{$products->image_4}}" class="form-control"></br>
-        <label>Image 5</label></br>
-        <input type="file" name="file1" id="image_5" value="{{$products->image_5}}" class="form-control"></br>
-        <input type="submit" value="Mettre à jour" class="btn btn-success"></br>
+        @method('PATCH')
+
+        <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+        <input type="hidden" name="id" id="id" value="{{ $products->id }}" id="id" />
+
+        <div class="form-group">
+            <label for="name">Nom du produit</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+            <div class="invalid-feedback">
+                Le nom du produit est requis
+            </div>
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="long_description">Description courte</label>
+            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
+            <div class="invalid-feedback">
+                La description courte est requise.
+            </div>
+            @error('description')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="short_description">Description longue</label>
+            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
+            <div class="invalid-feedback">
+                La description longue est requise.
+            </div>
+            @error('description')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="category_id">Catégorie</label>
+            <select class="form-control" id="category_id" name="category_id">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            @error('category_id')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="image_url">Image</label>
+            <input type="file" class="form-control" id="image_url" name="image_url" value="{{ old('image_url') }}"
+                required>
+            <div class="invalid-feedback">
+                L'image est requise
+            </div>
+            @error('image_url')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        </br>
+        <button type="submit" class="btn btn-primary">Ajouter le produit</button>
     </form>
-  
-  </div>
-</div>
-@stop
 @endsection
