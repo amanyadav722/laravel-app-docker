@@ -6,9 +6,9 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Intervention\Image\Image;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
 
 
 

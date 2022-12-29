@@ -28,18 +28,16 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
-    Route::resource('attributes', AttributeController::class);
-    Route::get('/products/export', 'ProductController@export');
-    
-// });
-
-// Route::middleware(['auth'])->group(function() {
-    
     Route::resource('products', ProductController::class);
     
-// });
+});
+
+Route::middleware(['auth'])->group(function() {
+    
+    
+});
 

@@ -18,28 +18,26 @@
                     href="{{ url('/') }}">Accueil</a>
                 <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                     href="{{ url('/products') }}">Produits</a>
-                {{-- @if (Route::has('login'))
-                    @auth --}}
+                @if (Route::has('login'))
+                    @auth
                         <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                             href="{{ url('/categories') }}">Catégories</a>
                         <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                             href="{{ url('/users') }}">Utilisateurs</a>
-                        <a class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
-                            href="{{ url('/attributes') }}">Attributs</a>
                         <a href="{{ url('/dashboard') }}"
                             class="py-2 d-none d-md-inline-block text-reset text-decoration-none">Tableau de Board</a>
                         <a href="{{ route('logout') }}""
                             class="py-2 d-none d-md-inline-block text-reset text-decoration-none"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Deconnexion</a>
-                    {{-- @else --}}
+                    @else
                         <a href="{{ route('login') }}"
                             class="py-2 d-none d-md-inline-block text-reset text-decoration-none">Connexion</a>
-                        {{-- @if (Route::has('register')) --}}
+                        @if (Route::has('register'))
                             <a href="{{ route('register') }}"
                                 class="py-2 d-none d-md-inline-block text-reset text-decoration-none">Inscription</a>
-                        {{-- @endauth
+                        @endauth
                     @endif
-                @endif --}}
+                @endif
             </div>
         </nav>
     </header>

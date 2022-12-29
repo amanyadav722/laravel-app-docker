@@ -4,8 +4,11 @@
 
 .selector-for-some-widget {
     box-sizing: content-box;
-  }
+}
 
-  .py-2 {
+.py-2 {
     text-decoration: none;
-  }
+}
+.checkbox:checked + .check-icon {
+    display: flex;
+}
