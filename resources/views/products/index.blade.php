@@ -23,6 +23,8 @@
                                         <th>ID</th>
                                         <th>Nom</th>
                                         <th>EAN</th>
+                                        <th>Catégorie</th>
+                                        <th>Status</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -32,6 +34,8 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->ean }}</td>
+                                        <td>{{ $item->category->name }}</td>
+                                        <td>{{ $item->status }}</td>
                                         <td>
                                             <a href="{{ url('/products/' . $item->id) }}" title="Voir produit"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> Afficher</button></a>
                                             <a href="{{ url('/products/' . $item->id . '/edit') }}" title="Editer Produit"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Modifier</button></a>

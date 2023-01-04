@@ -12,22 +12,6 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function setImageAttribute($value)
-    {
-        $image = Image::make($value)->resize(1500, 1500, function ($constraint) {
-            $constraint->aspectRatio();
-            $constraint->upsize();
-        });
-    
-        $image_path = Storage::put('public/images', $image->encode());
-        $this->attributes['image_url'] = Storage::url($image_path);
-    }
-
-    public function setUserIdAttribute()
-    {
-        $this->attributes['user_id'] = auth()->id();
-    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);

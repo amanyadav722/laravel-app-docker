@@ -9,14 +9,12 @@
     <form method="POST" action="{{ route('products.store') }}" class="needs-validation" novalidate>
         @csrf
 
-        @method('PATCH')
-
         <input type="hidden" name="user_id" value="{{ auth()->id() }}">
         <input type="hidden" name="id" id="id" value="{{ $products->id }}" id="id" />
 
         <div class="form-group">
             <label for="name">Nom du produit</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
+            <input type="text" class="form-control" id="name" name="name" value="{{ $products->name }}" required>
             <div class="invalid-feedback">
                 Le nom du produit est requis
             </div>
@@ -27,7 +25,7 @@
 
         <div class="form-group">
             <label for="long_description">Description courte</label>
-            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
+            <textarea class="form-control" id="description" name="description" value="{{ $products->short_description }}" required>{{ old('description') }}</textarea>
             <div class="invalid-feedback">
                 La description courte est requise.
             </div>
@@ -38,7 +36,7 @@
 
         <div class="form-group">
             <label for="short_description">Description longue</label>
-            <textarea class="form-control" id="description" name="description" required>{{ old('description') }}</textarea>
+            <textarea class="form-control" id="description" name="description" value="{{ $products->long_description }}" required>{{ old('description') }}</textarea>
             <div class="invalid-feedback">
                 La description longue est requise.
             </div>
@@ -61,7 +59,7 @@
 
         <div class="form-group">
             <label for="image_url">Image</label>
-            <input type="file" class="form-control" id="image_url" name="image_url" value="{{ old('image_url') }}"
+            <input type="file" class="form-control" id="image_url" name="image_url" value=""
                 required>
             <div class="invalid-feedback">
                 L'image est requise

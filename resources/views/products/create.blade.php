@@ -43,13 +43,12 @@
             <label for="status">Status</label>
             <select class="form-control" id="status" name="status" required>
                 <option value=""></option>
-                <option value="pending" {{ old('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                <option value="validated" {{ old('status') == 'validated' ? 'selected' : '' }}>Validated</option>
-                <option value="rejected" {{ old('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                <option value="En attente de validation" {{ old('status') == 'En attente de validation' ? 'selected' : '' }}>En attente de validation</option>
+                <option value="Validé" {{ old('status') == 'Validé' ? 'selected' : '' }}>Validé</option>
+                <option value="Rejeté" {{ old('status') == 'Rejeté' ? 'selected' : '' }}>Rejeté</option>
             </select>
         </div>
     <br>
         <button type="submit" class="btn btn-primary">Créer le produit</button>
     </form>
-    
 @endsection
