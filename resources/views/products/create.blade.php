@@ -1,34 +1,34 @@
 @extends('layout')
 @section('content')
     <br>
-    <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
+    <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-    
+        
         <div class="form-group">
             <label for="name">Nom du produit</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
         </div>
-    
+
         <div class="form-group">
             <label for="ean">Numéro EAN</label>
             <input type="text" class="form-control" id="ean" name="ean" value="{{ old('ean') }}" required>
         </div>
-    
+
         <div class="form-group">
             <label for="short_description">Description Courte</label>
             <input type="text" class="form-control" id="short_description" name="short_description" value="{{ old('short_description') }}" required>
         </div>
-    
+
         <div class="form-group">
             <label for="long_description">Description longue</label>
             <textarea class="form-control" id="long_description" name="long_description" required>{{ old('long_description') }}</textarea>
-        </div>
-    
+        </div><br>
+
         <div class="form-group">
-            <label for="image">Image</label>
-            <input type="file" class="form-control" id="image" name="image" accept="image/*">
-        </div>
-    
+            <label for="image">Image </label>
+            <input type="file" class="form-control-file" id="image" name="image" accept="image/*">
+        </div><br>
+
         <div class="form-group">
             <label for="category_id">Catégorie</label>
             <select class="form-control" id="category_id" name="category_id" required>
@@ -38,7 +38,7 @@
                 @endforeach
             </select>
         </div>
-    
+
         <div class="form-group">
             <label for="status">Status</label>
             <select class="form-control" id="status" name="status" required>

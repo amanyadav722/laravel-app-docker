@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ean')->nullable();
             $table->text('short_description')->nullable();
             $table->text('long_description')->nullable();
-            $table->string('image_url')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('status')->default('new');
